@@ -1,0 +1,234 @@
+/* Custom animations for animated avatars */
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px currentColor;
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    transform: scale(1.05);
+  }
+}
+
+/* Animation classes */
+.animate-shake {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+.animate-jump {
+  animation: jump 0.6s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Agent-specific animations */
+.agent-adam-happy {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.agent-beata-thinking {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.agent-wapiacy-doubtful {
+  animation: shake 1s ease-in-out infinite;
+}
+
+/* Talking animation variations */
+.talking-mild {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.talking-excited {
+  animation: pulse 0.5s ease-in-out infinite;
+}
+
+.talking-dramatic {
+  animation: pulse-glow 0.8s ease-in-out infinite;
+}
+
+/* Background effects for different emotions */
+.emotion-happy::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #fbbf24, #f59e0b);
+  z-index: -1;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.emotion-angry::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  z-index: -1;
+  animation: glow 1s ease-in-out infinite;
+}
+
+.emotion-surprised::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+  z-index: -1;
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+/* Floating emoji effects */
+.floating-emoji {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-emoji.happy {
+  color: #fbbf24;
+}
+
+.floating-emoji.angry {
+  color: #ef4444;
+}
+
+.floating-emoji.surprised {
+  color: #3b82f6;
+}
+
+.floating-emoji.doubtful {
+  color: #8b5cf6;
+}
+
+/* Speech bubble effect */
+.speech-bubble {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  max-width: 200px;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid white;
+}
+
+/* Disco mode animations */
+.disco-mode .avatar-container {
+  animation: disco-colors 2s linear infinite;
+}
+
+@keyframes disco-colors {
+  0% { background-color: #ef4444; }
+  16% { background-color: #f59e0b; }
+  33% { background-color: #10b981; }
+  50% { background-color: #3b82f6; }
+  66% { background-color: #8b5cf6; }
+  83% { background-color: #ec4899; }
+  100% { background-color: #ef4444; }
+}
+
+/* Loading animations */
+.thinking-dots {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.thinking-dots span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: thinking-pulse 1.4s ease-in-out infinite both;
+}
+
+.thinking-dots span:nth-child(1) { animation-delay: -0.32s; }
+.thinking-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes thinking-pulse {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animate-shake {
+    animation: shake 0.3s ease-in-out infinite;
+  }
+  
+  .animate-jump {
+    animation: jump 0.4s ease-in-out infinite;
+  }
+  
+  .animate-wiggle {
+    animation: wiggle 0.3s ease-in-out infinite;
+  }
+}

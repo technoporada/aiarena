@@ -1,0 +1,156 @@
+/* Tsunami Chaos Effects */
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes glitch {
+  0%, 100% { 
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% { 
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  40% { 
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% { 
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  80% { 
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-glitch {
+  animation: glitch 1s ease-in-out;
+}
+
+.invert {
+  filter: invert(1);
+}
+
+/* UFO Conspiracy Effects */
+@keyframes ufo-flyby {
+  0% { transform: translateX(-100vw) rotate(0deg); }
+  50% { transform: translateX(50vw) rotate(180deg); }
+  100% { transform: translateX(100vw) rotate(360deg); }
+}
+
+@keyframes cosmic-storm {
+  0%, 100% { 
+    background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+    transform: scale(1);
+  }
+  25% { 
+    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.2), transparent);
+    transform: scale(1.02);
+  }
+  50% { 
+    background: linear-gradient(135deg, transparent, rgba(255, 20, 147, 0.1), transparent);
+    transform: scale(1.01);
+  }
+  75% { 
+    background: linear-gradient(180deg, transparent, rgba(50, 205, 50, 0.2), transparent);
+    transform: scale(1.03);
+  }
+}
+
+@keyframes flat-earth-spin {
+  0% { transform: rotateY(0deg) rotateX(0deg); }
+  25% { transform: rotateY(90deg) rotateX(10deg); }
+  50% { transform: rotateY(180deg) rotateX(0deg); }
+  75% { transform: rotateY(270deg) rotateX(-10deg); }
+  100% { transform: rotateY(360deg) rotateX(0deg); }
+}
+
+.animate-ufo {
+  animation: ufo-flyby 2s ease-in-out;
+  position: relative;
+}
+
+.animate-ufo::before {
+  content: '🛸';
+  position: fixed;
+  top: 20%;
+  font-size: 4rem;
+  z-index: 9999;
+  animation: ufo-flyby 2s ease-in-out;
+}
+
+.animate-cosmic {
+  animation: cosmic-storm 1.5s ease-in-out;
+}
+
+.animate-flat-earth {
+  animation: flat-earth-spin 3s ease-in-out;
+}
+
+/* Tsunami specific animations */
+.tsunami-wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.tsunami-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+  animation: wave 2s infinite;
+}
+
+@keyframes wave {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.chaos-pulse {
+  animation: chaosPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes chaosPulse {
+  0% { 
+    box-shadow: 0 0 5px rgba(147, 51, 234, 0.5);
+    transform: scale(1);
+  }
+  100% { 
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
+    transform: scale(1.02);
+  }
+}
+
+/* Agent belief animations */
+.belief-flicker {
+  animation: beliefFlicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes beliefFlicker {
+  0% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* Victory animation */
+.victory-animation {
+  animation: victory 2s ease-in-out;
+}
+
+@keyframes victory {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(5deg); }
+  75% { transform: scale(1.1) rotate(-5deg); }
+}
